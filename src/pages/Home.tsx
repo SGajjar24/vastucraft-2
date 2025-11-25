@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import TestimonialsCarousel from '../components/TestimonialsCarousel';
-import CinematicHero from '../components/hero/CinematicHero';
+import ArtisticHero from '../components/hero/ArtisticHero';
 import { SERVICES_LIST, PROJECTS, TESTIMONIALS, IMAGES } from '../constants';
 
 const Home: React.FC = () => {
@@ -29,8 +29,8 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col w-full overflow-x-hidden bg-primary">
 
-      {/* 1. HERO SECTION - 3D & Cinematic */}
-      <CinematicHero />
+      {/* 1. HERO SECTION - Artistic & Premium */}
+      <ArtisticHero />
 
       {/* 2. ABOUT SECTION - Founders */}
       <section className="py-20 lg:py-32 bg-gradient-to-br from-surface via-primary to-surface relative overflow-hidden">

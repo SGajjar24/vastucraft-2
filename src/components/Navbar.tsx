@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
           ))}
           <a
             href="tel:+919104518311"
-            className="btn-primary text-sm px-4 py-2 flex items-center gap-2"
+            className="btn-outline-gold text-sm"
           >
             <Phone size={16} />
             <span>Book Consultation</span>

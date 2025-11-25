@@ -17,7 +17,7 @@ const CinematicHero: React.FC = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
     return (
-        <section ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden bg-primary pt-32 lg:pt-32">
+        <section ref={containerRef} className="relative h-screen flex items-center overflow-hidden bg-primary pt-16 lg:pt-20">
             {/* Background Ambience */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px]" />
@@ -39,28 +39,28 @@ const CinematicHero: React.FC = () => {
             {/* Smoother Bottom Fade to Next Section */}
             <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-primary via-primary/80 to-transparent z-0" />
 
-            <div className="container-custom relative z-10 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            <div className="container-custom relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-6 items-center">
 
                 {/* Text Content - Spans 7 columns */}
                 <motion.div
                     style={{ y: yText, opacity }}
-                    className="lg:col-span-7 flex flex-col justify-center relative z-20 pt-10 lg:pt-0"
+                    className="lg:col-span-7 flex flex-col justify-center relative z-20"
                 >
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="inline-flex items-center gap-3 mb-6"
+                        className="inline-flex items-center gap-3 mb-3"
                     >
                         <div className="w-12 h-[1px] bg-gold/50" />
-                        <span className="text-gold font-serif tracking-[0.2em] uppercase text-sm">VastuCraft AI Studio</span>
+                        <span className="text-gold font-serif tracking-[0.2em] uppercase text-xs">VastuCraft AI Studio</span>
                     </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] md:leading-[0.9] mb-8 text-stone-100"
+                        className="font-serif text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] mb-4 text-stone-100"
                     >
                         Design <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold italic pr-4">
@@ -74,7 +74,7 @@ const CinematicHero: React.FC = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                        className="text-lg text-stone-400 max-w-xl leading-relaxed mb-10 border-l-2 border-white/10 pl-6"
+                        className="text-sm lg:text-base text-stone-400 max-w-xl leading-relaxed mb-6 border-l-2 border-white/10 pl-6"
                     >
                         Where ancient wisdom meets algorithmic precision. We craft spaces that resonate with your soul and stand the test of time through AI-driven construction monitoring.
                     </motion.p>
@@ -83,7 +83,7 @@ const CinematicHero: React.FC = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                        className="flex flex-wrap gap-6"
+                        className="flex flex-wrap gap-4"
                     >
                         <MagneticButton onClick={() => navigate('/contact')} className="btn-primary">
                             Start Project
@@ -95,7 +95,7 @@ const CinematicHero: React.FC = () => {
                 </motion.div>
 
                 {/* Visual Content - Broken Grid Layout - Spans 5 columns */}
-                <div className="lg:col-span-5 relative h-[500px] lg:h-[600px] hidden lg:block">
+                <div className="lg:col-span-5 relative h-[350px] lg:h-[420px] xl:h-[480px] hidden lg:block">
                     {/* Main Large Image */}
                     <motion.div
                         style={{ y: yImage }}
