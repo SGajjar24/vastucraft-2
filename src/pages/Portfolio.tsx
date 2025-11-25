@@ -39,7 +39,7 @@ const Portfolio: React.FC = () => {
             <img
               src={IMAGES.PROJECT_3}
               alt="Portfolio Background"
-              className="w-full h-full object-cover opacity-40 animate-hero-zoom"
+              className="w-full h-full object-cover opacity-20 animate-hero-zoom"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-primary/60 to-primary" />
@@ -64,8 +64,8 @@ const Portfolio: React.FC = () => {
               key={cat}
               onClick={() => setFilter(cat)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all focus:outline-none ${filter === cat
-                  ? 'bg-gold text-primary shadow-lg shadow-gold/20'
-                  : 'bg-surface text-stone-400 hover:text-gold hover:bg-white/5 border border-white/5'
+                ? 'bg-gold text-primary shadow-lg shadow-gold/20'
+                : 'bg-surface text-stone-400 hover:text-gold hover:bg-white/5 border border-white/5'
                 }`}
             >
               {cat}

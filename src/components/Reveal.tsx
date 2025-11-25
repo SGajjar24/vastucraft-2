@@ -9,15 +9,17 @@ interface RevealProps {
   width?: "fit-content" | "100%";
   variant?: RevealVariant;
   threshold?: number;
+  fullHeight?: boolean;
 }
 
-const Reveal: React.FC<RevealProps> = ({ 
-  children, 
-  className = '', 
-  delay = 0, 
-  width = "100%", 
+const Reveal: React.FC<RevealProps> = ({
+  children,
+  className = '',
+  delay = 0,
+  width = "100%",
   variant = 'fade-up',
-  threshold = 0.15 
+  threshold = 0.15,
+  fullHeight = false
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -63,15 +65,15 @@ const Reveal: React.FC<RevealProps> = ({
       style={{ width }}
       className={className}
     >
-      <div 
-        style={{ 
+      <div
+        style={{
           transitionDuration: '1000ms',
           transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
           transitionDelay: `${delay}ms`,
           transform: getTransform(),
           opacity: getOpacity(),
         }}
-        className="will-change-transform will-change-opacity"
+        className={`will-change-transform will-change-opacity ${fullHeight ? 'h-full' : ''}`}
       >
         {children}
       </div>

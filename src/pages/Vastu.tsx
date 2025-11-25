@@ -46,10 +46,10 @@ const Vastu: React.FC = () => {
               className="w-full h-full object-cover opacity-20 animate-hero-zoom"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/50 to-primary/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary" />
 
-          {/* Smoother Bottom Fade to Next Section (White) - Extended Height */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-primary via-primary/60 to-transparent" />
+          {/* Smoother Bottom Fade to Next Section - Extended Height */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
         </div>
 
         {/* Mandala Overlay Animation - Optimized to use CSS Keyframes or simplified logic */}
@@ -59,7 +59,7 @@ const Vastu: React.FC = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-gold/30 rounded-full"></div>
         </div>
 
-        <div className="relative z-10 text-center max-w-4xl px-6 pt-20">
+        <div className="relative z-10 text-center max-w-4xl px-6 pt-20 pb-24">
           <Reveal>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/20 bg-gold/10 backdrop-blur-sm text-gold text-xs font-bold tracking-widest uppercase mb-6">
               <Compass size={14} /> Ancient Wisdom, Modern Math
@@ -85,14 +85,14 @@ const Vastu: React.FC = () => {
           </Reveal>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {elements.map((el, i) => (
-              <Reveal key={i} delay={i * 100} className="h-full">
-                <div className="flex flex-col items-center text-center group">
+              <Reveal key={i} delay={i * 100} className="h-full" fullHeight>
+                <div className="flex flex-col items-center text-center group h-full">
                   <div className={`w-16 h-16 rounded-2xl ${el.color} border flex items-center justify-center mb-4 transition-transform group-hover:scale-110 group-hover:rotate-3 shadow-lg`}>
                     {el.icon}
                   </div>
                   <h3 className="font-serif font-bold text-stone-100 text-lg">{el.name}</h3>
                   <p className="text-xs text-stone-500 uppercase tracking-wider mt-1 mb-2">{el.direction}</p>
-                  <p className="text-sm text-stone-400">{el.desc}</p>
+                  <p className="text-sm text-stone-400 flex-grow">{el.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -169,13 +169,13 @@ const Vastu: React.FC = () => {
               { zone: "South-West (Nairutya)", element: "Earth", use: "Master Bedroom", tip: "The zone of stability. Heaviest furniture and the head of the family belong here.", bg: "bg-amber-500/5 border-amber-500/10 hover:border-amber-500/30" },
               { zone: "North-West (Vayu)", element: "Air", use: "Guest / Bathroom", tip: "Movement flows here. Ideal for guest rooms or finished goods in offices.", bg: "bg-slate-500/5 border-slate-500/10 hover:border-slate-500/30" },
             ].map((card, i) => (
-              <Reveal key={i} delay={i * 100} className="h-full">
-                <div className={`p-8 rounded-2xl border ${card.bg} hover:shadow-xl transition-all duration-300 group h-full`}>
+              <Reveal key={i} delay={i * 100} className="h-full" fullHeight>
+                <div className={`p-8 rounded-2xl border ${card.bg} hover:shadow-xl transition-all duration-300 group h-full flex flex-col`}>
                   <h3 className="font-serif font-bold text-xl text-stone-100 mb-1">{card.zone}</h3>
                   <p className="text-xs font-bold uppercase tracking-widest opacity-60 mb-4 text-stone-400">{card.element}</p>
                   <div className="h-px w-full bg-white/10 mb-4"></div>
                   <p className="text-sm font-bold text-stone-300 mb-2">Best for: {card.use}</p>
-                  <p className="text-sm text-stone-500 leading-relaxed">{card.tip}</p>
+                  <p className="text-sm text-stone-500 leading-relaxed flex-grow">{card.tip}</p>
                 </div>
               </Reveal>
             ))}

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, CheckCircle, Loader2, MessageCircle, Sparkles, Zap, ArrowDown } from 'lucide-react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+import ProjectConcierge from '../components/ProjectConcierge';
 import { IMAGES, CONTACT_INFO } from '../constants';
 
 const Contact: React.FC = () => {
@@ -81,7 +82,7 @@ const Contact: React.FC = () => {
             <img
               src={IMAGES.HERO_CONTACT}
               alt="VastuCraft Studio"
-              className="w-full h-full object-cover opacity-50 animate-hero-zoom"
+              className="w-full h-full object-cover opacity-20 animate-hero-zoom"
             />
           </div>
           {/* Enhanced Overlay for readability */}
@@ -215,82 +216,8 @@ const Contact: React.FC = () => {
 
           {/* Form */}
           <Reveal delay={300} variant="fade-up">
-            <div className="bg-surface p-8 lg:p-10 rounded-2xl shadow-xl border border-white/5">
-              {formStatus === 'success' ? (
-                <div className="h-full flex flex-col items-center justify-center text-center p-8 animate-fade-in">
-                  <div className="w-20 h-20 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mb-6">
-                    <CheckCircle size={40} />
-                  </div>
-                  <h3 className="text-2xl font-serif font-bold text-stone-100 mb-2">Message Sent</h3>
-                  <p className="text-stone-400 mb-8">Thank you. We usually respond within 24 hours.</p>
-                  <Button variant="outline" onClick={() => setFormStatus('idle')}>Send Another</Button>
-                </div>
-              ) : (
-                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-serif font-bold text-stone-100">Send a Message</h3>
-                    <p className="text-stone-400 text-sm mt-1">Fill out the form below and we'll get back to you.</p>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-bold text-stone-300">Name</label>
-                      <input name="name" id="name" required className="w-full px-4 py-3 bg-primary rounded-lg border border-white/10 focus:border-gold/50 focus:ring-1 focus:ring-gold/50 outline-none transition-all text-stone-200 placeholder-stone-600" placeholder="John Doe" />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="phone" className="text-sm font-bold text-stone-300">Phone</label>
-                      <input name="phone" id="phone" required type="tel" className="w-full px-4 py-3 bg-primary rounded-lg border border-white/10 focus:border-gold/50 focus:ring-1 focus:ring-gold/50 outline-none transition-all text-stone-200 placeholder-stone-600" placeholder="+91" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-bold text-stone-300">Email</label>
-                    <input name="email" id="email" required type="email" className="w-full px-4 py-3 bg-primary rounded-lg border border-white/10 focus:border-gold/50 focus:ring-1 focus:ring-gold/50 outline-none transition-all text-stone-200 placeholder-stone-600" placeholder="john@example.com" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="service" className="text-sm font-bold text-stone-300">Interest</label>
-                    <div className="relative">
-                      <select
-                        name="service"
-                        id="service"
-                        defaultValue={defaultService}
-                        className="w-full px-4 py-3 bg-primary rounded-lg border border-white/10 focus:border-gold/50 focus:ring-1 focus:ring-gold/50 outline-none transition-all appearance-none text-stone-200"
-                      >
-                        <option value="Architecture Design">Architecture Design</option>
-                        <option value="Interior Design">Interior Design</option>
-                        <option value="Vastu Consultation">Vastu Consultation</option>
-                        <option value="AI Construction Monitoring">AI Construction Monitoring</option>
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-stone-400">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6" /></svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-bold text-stone-300">Project Details</label>
-                    <textarea name="message" id="message" required rows={4} className="w-full px-4 py-3 bg-primary rounded-lg border border-white/10 focus:border-gold/50 focus:ring-1 focus:ring-gold/50 outline-none transition-all resize-none text-stone-200 placeholder-stone-600" placeholder="Location, plot size, requirements..."></textarea>
-                  </div>
-
-                  {formStatus === 'error' && (
-                    <div className="p-3 bg-red-500/10 text-red-400 text-sm rounded-md border border-red-500/20 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                      {errorMessage}
-                    </div>
-                  )}
-
-                  <Button
-                    type="submit"
-                    fullWidth
-                    size="lg"
-                    disabled={formStatus === 'submitting'}
-                    className="mt-2"
-                  >
-                    {formStatus === 'submitting' ? <Loader2 className="animate-spin" /> : 'Send Request'}
-                  </Button>
-                </form>
-              )}
+            <div className="w-full">
+              <ProjectConcierge />
             </div>
           </Reveal>
         </div>

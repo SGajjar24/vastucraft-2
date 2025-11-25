@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Building, Sofa, Frame, Cpu, HardHat, Compass, Check, ArrowRight, PenTool } from 'lucide-react';
+import { Building, Sofa, Frame, Cpu, HardHat, Compass, Check, ArrowRight, PenTool, LayoutTemplate } from 'lucide-react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import { IMAGES } from '../constants';
@@ -35,10 +35,13 @@ const Services: React.FC = () => {
             <img
               src={IMAGES.PROJECT_1}
               alt="Services Background"
-              className="w-full h-full object-cover opacity-30 animate-hero-zoom"
+              className="w-full h-full object-cover opacity-20 animate-hero-zoom"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/50 to-primary" />
+
+          {/* Smoother Bottom Fade to Next Section */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-primary via-primary/80 to-transparent z-0" />
         </div>
 
         <div className="relative z-10 container-custom text-center pt-20">
@@ -127,7 +130,7 @@ const Services: React.FC = () => {
             <div className="flex flex-col md:flex-row gap-16 items-start">
               <div className="md:w-1/3 relative">
                 <div className="relative bg-surface p-8 rounded-2xl shadow-lg border border-white/5 text-gold group hover:shadow-gold/10 hover:bg-surface/80 transition-all duration-300">
-                  <PenTool size={48} className="mb-6 transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
+                  <LayoutTemplate size={48} className="mb-6 transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
                   <h3 className="text-2xl font-serif font-bold text-stone-100 mb-2">Facade Design</h3>
                   <p className="text-xs font-bold uppercase text-stone-400 tracking-wider">First Impressions</p>
                 </div>

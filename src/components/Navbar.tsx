@@ -33,13 +33,13 @@ const Navbar: React.FC = () => {
   }, [location]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Vastu', path: '/vastu' },
     { name: 'AI Tech', path: '/ai-construction' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Pricing', path: '/pricing' },
+    { name: 'Connect', path: '/connect' },
   ];
 
   return (
@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden xl:flex items-center space-x-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
           ))}
           <a
             href="tel:+919104518311"
-            className="btn-primary text-sm px-5 py-2 flex items-center gap-2"
+            className="btn-primary text-sm px-4 py-2 flex items-center gap-2"
           >
             <Phone size={16} />
             <span>Book Consultation</span>
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden text-stone-100 hover:text-gold transition-colors z-50"
+          className="xl:hidden text-stone-100 hover:text-gold transition-colors z-50"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>

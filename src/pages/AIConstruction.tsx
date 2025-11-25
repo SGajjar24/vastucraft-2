@@ -39,11 +39,14 @@ const AIConstruction: React.FC = () => {
             <img
               src={IMAGES.HERO_AI}
               alt="AI Background"
-              className="w-full h-full object-cover opacity-40 animate-hero-zoom"
+              className="w-full h-full object-cover opacity-20 animate-hero-zoom"
             />
           </div>
-          {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/50 via-primary/60 to-primary" />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary z-0"></div>
+
+          {/* Smoother Bottom Fade to Next Section */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-primary via-primary/80 to-transparent z-0" />
         </div>
 
         <div className="container-custom relative z-10 flex flex-col items-center text-center pt-20">
@@ -142,13 +145,13 @@ const AIConstruction: React.FC = () => {
               { title: "Digital Twin", icon: <BarChart3 size={32} />, desc: "A live digital replica of your building to predict maintenance needs." },
               { title: "Smart Dashboards", icon: <Activity size={32} />, desc: "Real-time analytics for developers to track multiple sites." },
             ].map((card, i) => (
-              <Reveal key={i} delay={i * 100}>
-                <div className="bg-surface p-8 rounded-2xl shadow-lg text-center hover:bg-surface/80 transition-colors group h-full border border-white/5 hover:border-blue-500/30">
+              <Reveal key={i} delay={i * 100} className="h-full" fullHeight>
+                <div className="bg-surface p-8 rounded-2xl shadow-lg text-center hover:bg-surface/80 transition-colors group h-full border border-white/5 hover:border-blue-500/30 flex flex-col">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-500/10 text-blue-400 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
                     {card.icon}
                   </div>
                   <h3 className="text-xl font-bold mb-2 font-serif text-stone-100">{card.title}</h3>
-                  <p className="text-stone-500">{card.desc}</p>
+                  <p className="text-stone-500 flex-grow">{card.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -170,7 +173,7 @@ const AIConstruction: React.FC = () => {
           </Reveal>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Reveal delay={100} className="h-full">
+            <Reveal delay={100} className="h-full" fullHeight>
               <div className="p-8 border border-white/10 rounded-2xl hover:border-gold/30 transition-colors h-full flex flex-col bg-primary/50">
                 <h3 className="text-2xl font-serif font-bold text-stone-100 mb-2">For Homeowners</h3>
                 <span className="inline-block w-fit bg-white/10 text-stone-300 text-xs font-bold px-2 py-1 rounded mb-6">Lightweight Monitoring</span>
@@ -183,7 +186,7 @@ const AIConstruction: React.FC = () => {
               </div>
             </Reveal>
 
-            <Reveal delay={200} className="h-full">
+            <Reveal delay={200} className="h-full" fullHeight>
               <div className="p-8 border border-blue-500/20 rounded-2xl hover:border-blue-500/50 transition-colors bg-blue-900/10 h-full flex flex-col relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/10 rounded-bl-full"></div>
                 <h3 className="text-2xl font-serif font-bold text-stone-100 mb-2">For Developers</h3>

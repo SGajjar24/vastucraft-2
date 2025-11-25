@@ -82,7 +82,7 @@ const Blog: React.FC = () => {
             <img
               src={IMAGES.BLOG_1}
               alt="Blog Background"
-              className="w-full h-full object-cover opacity-40 animate-hero-zoom"
+              className="w-full h-full object-cover opacity-20 animate-hero-zoom"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-primary/60 to-primary/40" />

@@ -31,7 +31,7 @@ const About: React.FC = () => {
             <img
               src={IMAGES.HERO_ARCH}
               alt="About Background"
-              className="w-full h-full object-cover opacity-30 animate-hero-zoom"
+              className="w-full h-full object-cover opacity-20 animate-hero-zoom"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-primary/50 via-primary/40 to-primary" />
