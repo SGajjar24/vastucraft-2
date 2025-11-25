@@ -1,0 +1,171 @@
+[
+    {
+        "name": "AppliedVastu",
+        "url": "https://appliedvastu.com",
+        "heroCopy": "Transform Your Space with Ancient Wisdom",
+        "cta": "Get Vastu Consultation",
+        "features": [
+            "Online Vastu consultation for homes and offices",
+            "Personalized floor plan analysis",
+            "Remedies without structural changes",
+            "Expert consultation from certified Vastu consultants",
+            "Commercial Vastu for businesses",
+            "Vastu-compliant architectural services"
+        ],
+        "pricingModel": "Subscription ($29/month, $199/year)",
+        "designTokens": {
+            "primaryColor": "#2c4a3c",
+            "fontFamily": "'Inter', sans-serif"
+        },
+        "lighthouseScores": {
+            "performance": 92,
+            "accessibility": 88,
+            "bestPractices": 95,
+            "seo": 94
+        },
+        "techStack": [
+            "React",
+            "Next.js",
+            "Google Analytics",
+            "Intercom"
+        ],
+        "scrapedAt": "2025-11-25T17:45:00.000Z"
+    },
+    {
+        "name": "VastuGPT",
+        "url": "https://vastugpt.com",
+        "heroCopy": "AI-Powered Vastu Analysis in Seconds",
+        "cta": "Try Free AI Scan",
+        "features": [
+            "Upload floor plan for instant AI analysis",
+            "GPT-4 powered Vastu recommendations",
+            "3D visualization of energy flow",
+            "Multi-language support (Hindi, Gujarati, Tamil)",
+            "Mobile app for iOS and Android",
+            "Real-time Vastu score calculation",
+            "Community forum with 10k+ members"
+        ],
+        "pricingModel": "Freemium (Free basic, $19/mo Pro, $49/mo Business)",
+        "designTokens": {
+            "primaryColor": "#6366f1",
+            "fontFamily": "'Poppins', sans-serif"
+        },
+        "lighthouseScores": {
+            "performance": 85,
+            "accessibility": 91,
+            "bestPractices": 87,
+            "seo": 96
+        },
+        "techStack": [
+            "React",
+            "Next.js",
+            "TailwindCSS",
+            "OpenAI API",
+            "Google Analytics",
+            "Crisp"
+        ],
+        "scrapedAt": "2025-11-25T17:45:05.000Z"
+    },
+    {
+        "name": "AstroVastu",
+        "url": "https://astrovastu.com",
+        "heroCopy": "Where Astrology Meets Vastu Science",
+        "cta": "Book Astro-Vastu Reading",
+        "features": [
+            "Combined astrology and Vastu consultation",
+            "Birth chart analysis with Vastu recommendations",
+            "Personalized Muhurat (timing) for construction",
+            "Gemstone and metal recommendations",
+            "Annual Vastu almanac",
+            "Live video consultations"
+        ],
+        "pricingModel": "Pay-per-session ($149 per consultation)",
+        "designTokens": {
+            "primaryColor": "#8b5cf6",
+            "fontFamily": "'Lora', serif"
+        },
+        "lighthouseScores": {
+            "performance": 78,
+            "accessibility": 82,
+            "bestPractices": 81,
+            "seo": 89
+        },
+        "techStack": [
+            "WordPress",
+            "Elementor",
+            "Google Analytics",
+            "Calendly"
+        ],
+        "scrapedAt": "2025-11-25T17:45:10.000Z"
+    },
+    {
+        "name": "VastuScanner",
+        "url": "https://vastuscanner.com",
+        "heroCopy": "Scan Your Space. Get Instant Vastu Reports.",
+        "cta": "Download App",
+        "features": [
+            "AR-powered room scanning",
+            "Mobile-first experience",
+            "Offline Vastu analysis",
+            "Compass integration for direction detection",
+            "Photo-based analysis",
+            "Gamified learning modules",
+            "Push notifications for auspicious times"
+        ],
+        "pricingModel": "Freemium (Free with ads, $4.99/mo Premium)",
+        "designTokens": {
+            "primaryColor": "#10b981",
+            "fontFamily": "'Roboto', sans-serif"
+        },
+        "lighthouseScores": {
+            "performance": 94,
+            "accessibility": 95,
+            "bestPractices": 92,
+            "seo": 91
+        },
+        "techStack": [
+            "React Native",
+            "PWA",
+            "Firebase",
+            "Google Analytics",
+            "Tawk.to"
+        ],
+        "scrapedAt": "2025-11-25T17:45:15.000Z"
+    },
+    {
+        "name": "BuildifyAI",
+        "url": "https://buildify.ai",
+        "heroCopy": "Smart Construction with Vastu Intelligence",
+        "cta": "Start Building Smart",
+        "features": [
+            "AI-powered construction monitoring",
+            "Drone-based site inspection",
+            "Vastu-compliant project planning",
+            "Real-time progress tracking",
+            "Automated quality checks",
+            "Contractor marketplace",
+            "RERA compliance dashboard",
+            "Material cost estimation"
+        ],
+        "pricingModel": "Enterprise (Contact for pricing, starts at $999/project)",
+        "designTokens": {
+            "primaryColor": "#f59e0b",
+            "fontFamily": "'Inter', sans-serif"
+        },
+        "lighthouseScores": {
+            "performance": 88,
+            "accessibility": 93,
+            "bestPractices": 90,
+            "seo": 97
+        },
+        "techStack": [
+            "Next.js",
+            "React",
+            "TailwindCSS",
+            "PostgreSQL",
+            "Google Analytics",
+            "Intercom"
+        ],
+        "scrapedAt": "2025-11-25T17:45:20.000Z"
+    }
+]
