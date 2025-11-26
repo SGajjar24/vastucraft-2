@@ -112,6 +112,12 @@ const ProjectConcierge: React.FC = () => {
                 setMessages(prev => [...prev, { id: Date.now().toString() + 'bot', type: 'bot', content: botResponse }]);
             }
             setIsTyping(false);
+
+            // Only auto-focus on desktop to prevent scroll jumping on mobile
+            if (window.innerWidth >= 768) {
+                const inputElement = document.querySelector('input[type="text"]') as HTMLInputElement;
+                inputElement?.focus();
+            }
         }, 1500);
     };
 
@@ -151,8 +157,8 @@ const ProjectConcierge: React.FC = () => {
                         >
                             <div
                                 className={`max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed shadow-md ${msg.type === 'user'
-                                        ? 'bg-gold text-primary font-medium rounded-tr-none'
-                                        : 'bg-white/5 text-stone-200 border border-white/10 rounded-tl-none'
+                                    ? 'bg-gold text-primary font-medium rounded-tr-none'
+                                    : 'bg-white/5 text-stone-200 border border-white/10 rounded-tl-none'
                                     }`}
                             >
                                 {msg.content.split('\n').map((line, i) => (
