@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
     { name: 'AI Tech', path: '/ai-construction' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Pricing', path: '/pricing' },
-    { name: 'Connect', path: '/connect' },
+    { name: 'Digital Card', path: '/connect' },
   ];
 
   return (

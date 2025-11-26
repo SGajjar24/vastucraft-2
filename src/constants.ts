@@ -13,14 +13,14 @@ const FALLBACK_SWETANG = 'https://images.unsplash.com/photo-1556157382-97eda2d62
 
 export const IMAGES = {
   // TEAM PHOTOS (Recommended: 800x800px, 1:1 Aspect Ratio)
-  VIDHI: FALLBACK_VIDHI,
-  SWETANG: FALLBACK_SWETANG,
+  VIDHI: '/images/vidhi_portrait.jpg',
+  SWETANG: '/images/swetang_portrait.jpg',
   FALLBACK_VIDHI,
   FALLBACK_SWETANG,
 
   // HERO BANNERS (Recommended: 1920x1080px, 16:9 Aspect Ratio)
   HERO_ARCH: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200',
-  HERO_AI: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200',
+  HERO_AI: '/images/ai_tech_hero.png',
   HERO_CONTACT: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200',
 
   // PROJECT THUMBNAILS (Recommended: 800x600px, 4:3 Aspect Ratio)
@@ -29,7 +29,7 @@ export const IMAGES = {
   PROJECT_3: 'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&fit=crop&q=80&w=800',
   PROJECT_4: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800',
   PROJECT_5: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&q=80&w=800',
-  PROJECT_6: 'https://images.unsplash.com/photo-1542621334-a471dfb2e4cb?auto=format&fit=crop&q=80&w=800',
+  PROJECT_6: '/images/apex_industrial_hub.png',
 
   // BLOG COVERS (Recommended: 800x500px, 16:10 Aspect Ratio)
   BLOG_1: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800',
@@ -70,17 +70,17 @@ export const AHMEDABAD_OFFICE = {
 export const FOUNDERS: TeamMember[] = [
   {
     name: 'Ar. Vidhi Gajjar',
-    role: 'Principal Architect & Vastu Specialist',
+    role: 'Principal Architect',
     imageUrl: IMAGES.VIDHI,
-    bio: 'CoA-registered architect (CA/2018/103740) with deep experience as Architect of Record for RERA-registered projects across Gujarat. Expert in blending Vastu Shastra with modern aesthetics.',
-    strengths: ['Vastu-led space planning', 'RERA documentation', 'Residential & commercial architecture', 'Client-centric design']
+    bio: 'CoA-registered architect with over 7 years of deep experience as Architect of Record for numerous RERA-registered projects across Gujarat. Specializes in integrating ancient Vastu principles with contemporary architectural planning, ensuring that every layout optimizes energy flow without compromising on modern functionality or aesthetics.',
+    strengths: ['Vastu-Compliant Planning', 'RERA documentation', 'Residential & commercial architecture', 'Client-centric design']
   },
   {
     name: 'Swetang Gajjar',
     role: 'Co-founder, AI & Smart Systems Lead',
     imageUrl: IMAGES.SWETANG,
-    bio: 'Senior software engineer & AI/ML specialist with 8+ years in industrial automation and computer vision. Transforms traditional construction into data-driven, intelligent environments.',
-    strengths: ['AI & ML model development', 'Industrial automation', 'Smart building IoT', 'Cloud cost optimisation']
+    bio: 'Holds a Master\'s in Computer Engineering from the USA with over 11 years of expertise in Robotics and AI. Spent 7+ years in the US working on critical military and defense projects. Now pioneers the development of proprietary Vastu-AI algorithms that scientifically analyze floor plans and automate complex Vastu calculations for precision and reliability.',
+    strengths: ['Vastu-AI Algorithms', 'Defense-grade Automation', 'Smart Building IoT', 'Cloud Cost Optimization']
   }
 ];
 

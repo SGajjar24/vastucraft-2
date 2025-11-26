@@ -138,7 +138,7 @@ const Vastu: React.FC = () => {
             <Reveal delay={200}>
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-surface relative border border-white/10">
-                  <img src="https://images.unsplash.com/photo-1518098268026-4e1491a43259?auto=format&fit=crop&q=80&w=800" alt="Sunlight Architecture" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" />
+                  <img src="/images/sun_path_vastu.png" alt="Sunlight Architecture" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" />
                   <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent text-white">
                     <div className="font-serif text-2xl font-bold text-gold">The Sun Path</div>
                     <p className="text-white/80 text-sm">The core of Vastu Shastra</p>

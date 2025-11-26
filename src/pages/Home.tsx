@@ -47,7 +47,7 @@ const Home: React.FC = () => {
                   <div className="relative group mt-12">
                     <div className="absolute inset-0 bg-gradient-to-br from-gold/30 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                     <div className="relative rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl bg-surface aspect-[3/4]">
-                      <img src={IMAGES.SWETANG} alt="Swetang Gajjar" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="eager" />
+                      <img src={IMAGES.SWETANG} alt="Swetang Gajjar" className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700" loading="eager" />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent opacity-60"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
                         <p className="text-white font-serif font-bold text-xl mb-1">Swetang Gajjar</p>
@@ -60,11 +60,11 @@ const Home: React.FC = () => {
                   <div className="relative group -mt-8">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-400/30 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                     <div className="relative rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl bg-surface aspect-[3/4]">
-                      <img src={IMAGES.VIDHI} alt="Ar. Vidhi Gajjar" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="eager" />
+                      <img src={IMAGES.VIDHI} alt="Ar. Vidhi Gajjar" className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700" loading="eager" />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent opacity-60"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
                         <p className="text-white font-serif font-bold text-xl mb-1">Ar. Vidhi Gajjar</p>
-                        <p className="text-gold text-xs uppercase tracking-wider">Vastu Architect</p>
+                        <p className="text-gold text-xs uppercase tracking-wider">Principal Architect</p>
                       </div>
                     </div>
                   </div>
@@ -86,8 +86,8 @@ const Home: React.FC = () => {
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold">Two Worlds</span>
                 </h2>
                 <p className="text-stone-300 text-xl mb-10 leading-relaxed font-light">
-                  We are a unique husband-wife duo combining two distinct disciplines.
-                  <span className="text-gold font-semibold"> Ar. Vidhi Gajjar</span> brings the intuitive art of Vastu-compliant architecture, while
+                  We are a unique brother-sister duo combining two distinct disciplines.
+                  <span className="text-gold font-semibold"> Ar. Vidhi Gajjar</span> specializes in the seamless implementation of Vastu principles in modern real estate, while
                   <span className="text-gold font-semibold"> Swetang Gajjar</span> integrates cutting-edge AI to ensure construction precision.
                 </p>
 

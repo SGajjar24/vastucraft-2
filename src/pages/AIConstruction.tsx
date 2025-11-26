@@ -66,7 +66,7 @@ const AIConstruction: React.FC = () => {
           </Reveal>
 
           <Reveal variant="fade-up" delay={400}>
-            <p className="text-xl text-stone-300 max-w-2xl mb-10 leading-relaxed font-light">
+            <p className="text-xl text-stone-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
               We adapt industrial-grade AI and IoT technology to monitor your construction quality, safety, and timeline in real-time.
             </p>
           </Reveal>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, X } from 'lucide-react';
 import { PRICING_PLANS, PRICING_FAQS } from '../constants';
@@ -6,18 +6,45 @@ import Reveal from '../components/Reveal';
 
 const Pricing: React.FC = () => {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const heroRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (heroRef.current) {
+                const scrolled = window.scrollY;
+                if (scrolled < 1000) {
+                    heroRef.current.style.transform = `translate3d(0, ${scrolled * 0.4}px, 0)`;
+                }
+            }
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const toggleFaq = (index: number) => {
         setOpenFaq(openFaq === index ? null : index);
     };
 
     return (
-        <div className="bg-primary min-h-screen pt-24">
+        <div className="bg-primary min-h-screen">
             {/* Hero Section */}
-            <section className="relative py-20 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-primary via-surface/30 to-primary"></div>
+            <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
+                    <div
+                        ref={heroRef}
+                        className="absolute inset-0 w-full h-[120%] -top-[10%] will-change-transform"
+                    >
+                        <img
+                            src="/images/pricing_hero.png"
+                            alt="Pricing Hero"
+                            className="w-full h-full object-cover opacity-30 animate-hero-zoom"
+                        />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
+                </div>
 
-                <div className="relative container-custom text-center">
+                <div className="relative container-custom text-center z-10 pt-20">
                     <Reveal>
                         <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-100 mb-6">
                             Simple, Transparent Pricing

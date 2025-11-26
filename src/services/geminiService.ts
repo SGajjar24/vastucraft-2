@@ -11,9 +11,9 @@ const ai = new GoogleGenAI({ apiKey: apiKey });
 export const sendVastuQuery = async (query: string): Promise<{ text: string; isError: boolean }> => {
   if (!apiKey) {
     console.error("API Key is missing");
-    return { 
-      text: "I'm sorry, but the AI service is currently unavailable (API Key missing). Please contact the studio directly.", 
-      isError: true 
+    return {
+      text: "I'm sorry, but the AI service is currently unavailable (API Key missing). Please contact the studio directly.",
+      isError: true
     };
   }
 
@@ -44,9 +44,9 @@ export const sendVastuQuery = async (query: string): Promise<{ text: string; isE
     return { text: response.text || "I didn't get a response.", isError: false };
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return { 
-      text: "I'm sorry, I'm having trouble connecting to the Vastu knowledge base right now. Please try again later.", 
-      isError: true 
+    return {
+      text: "I'm sorry, I'm having trouble connecting to the Vastu knowledge base right now. Please try again later.",
+      isError: true
     };
   }
 };

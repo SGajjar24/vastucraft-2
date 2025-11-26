@@ -59,7 +59,7 @@ const About: React.FC = () => {
                   <img
                     src={founder.imageUrl}
                     alt={founder.name}
-                    className="w-full h-[500px] object-cover rounded-2xl shadow-2xl border border-white/5 grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="w-full aspect-[3/4] object-cover object-top rounded-2xl shadow-2xl border border-white/5 grayscale group-hover:grayscale-0 transition-all duration-700"
                     loading="lazy"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;

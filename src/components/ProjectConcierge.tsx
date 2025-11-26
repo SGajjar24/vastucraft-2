@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, User, MapPin, Ruler, Sparkles, MessageSquare, CheckCircle, Loader2 } from 'lucide-react';
-import { sendVastuQuery } from '../services/geminiService';
+// import { sendVastuQuery } from '../services/geminiService'; // Removed AI dependency
 
 interface Message {
     id: string;
@@ -15,6 +15,7 @@ interface ProjectData {
     location: string;
     plotSize: string;
     requirements: string;
+    contact: string;
 }
 
 const ProjectConcierge: React.FC = () => {
@@ -27,18 +28,37 @@ const ProjectConcierge: React.FC = () => {
         name: '',
         location: '',
         plotSize: '',
-        requirements: ''
+        requirements: '',
+        contact: ''
     });
     const [isTyping, setIsTyping] = useState(false);
-    const messagesEndRef = useRef<HTMLDivElement>(null);
+    const chatContainerRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+        }
     };
 
     useEffect(() => {
         scrollToBottom();
-    }, [messages]);
+    }, [messages, isTyping]);
+
+    const resetChat = () => {
+        setMessages([
+            { id: Date.now().toString(), type: 'bot', content: "Namaste! I'm your VastuCraft Concierge. Let's start planning your dream project. What is your name?" }
+        ]);
+        setInputValue('');
+        setStep(0);
+        setProjectData({
+            name: '',
+            location: '',
+            plotSize: '',
+            requirements: '',
+            contact: ''
+        });
+        setIsTyping(false);
+    };
 
     const handleSend = async () => {
         if (!inputValue.trim()) return;
@@ -66,9 +86,13 @@ const ProjectConcierge: React.FC = () => {
                 newData.plotSize = inputValue;
                 botResponse = `Got it. Finally, tell me a bit about your vision or requirements. Are you looking for a modern home, office, or specific Vastu compliance?`;
                 break;
-            case 3: // Requirements -> AI Analysis
+            case 3: // Requirements
                 newData.requirements = inputValue;
-                botResponse = "Thank you. I'm analyzing your requirements with our Vastu AI engine to generate some preliminary insights...";
+                botResponse = `Thank you. Lastly, how can we reach you? Please share your Email or Phone Number so we can send you the detailed report.`;
+                break;
+            case 4: // Contact -> Final Submission
+                newData.contact = inputValue;
+                botResponse = "Perfect. I'm finalizing your project details...";
                 break;
             default:
                 break;
@@ -79,35 +103,50 @@ const ProjectConcierge: React.FC = () => {
 
         // Simulate typing delay
         setTimeout(async () => {
-            if (step === 3) {
-                // AI Analysis Step
-                setMessages(prev => [...prev, { id: 'analysis-start', type: 'bot', content: botResponse }]);
+            if (step === 4) {
+                // Final Step - Submit to Web3Forms directly (No AI)
 
+                const finalResponse = `Thank you, ${newData.name}! I've securely recorded your project details. Ar. Vidhi Gajjar and our team will review your requirements for ${newData.location} and contact you at ${newData.contact} shortly to discuss the next steps.`;
+
+                setMessages(prev => [...prev, { id: 'final', type: 'bot', content: finalResponse }]);
+
+                // Submit to Web3Forms
                 try {
-                    const prompt = `
-            Analyze this architectural project inquiry based on Vastu Shastra principles:
-            Client: ${newData.name}
-            Location: ${newData.location}
-            Size: ${newData.plotSize}
-            Requirements: ${newData.requirements}
-            
-            Provide 3 brief, high-impact Vastu tips or architectural suggestions specific to this context. 
-            Keep it professional, encouraging, and mention that a detailed audit requires a site visit.
-            Format as a bulleted list.
-          `;
+                    const submissionData = {
+                        access_key: '83a05dbd-9847-45c4-8be5-a9c911ca5eaf',
+                        subject: `New Project Concierge Lead: ${newData.name}`,
+                        from_name: "VastuCraft Concierge",
+                        // structured data for easy parsing/export
+                        Name: newData.name,
+                        Location: newData.location,
+                        Plot_Size: newData.plotSize,
+                        Requirements: newData.requirements,
+                        Contact_Info: newData.contact,
+                        Status: "Pending Review",
+                        // Fallback message for email clients
+                        message: `
+New Lead Details:
+--------------------------------
+Name: ${newData.name}
+Location: ${newData.location}
+Plot Size: ${newData.plotSize}
+Requirements: ${newData.requirements}
+Contact Info: ${newData.contact}
 
-                    const aiResult = await sendVastuQuery(prompt);
+Status: Pending Manual Review
+                        `
+                    };
 
-                    const finalResponse = `Here are some initial thoughts for your project:\n\n${aiResult.text}\n\nI've forwarded your details to Ar. Vidhi Gajjar. We'll be in touch shortly to schedule a detailed consultation!`;
-
-                    setMessages(prev => [...prev, { id: 'final', type: 'bot', content: finalResponse }]);
-
-                    // Here you would typically send the data to your backend/email service
-                    // await submitToBackend(newData);
-
-                } catch (error) {
-                    setMessages(prev => [...prev, { id: 'error', type: 'bot', content: "I've noted your details, but my AI connection is a bit weak right now. Don't worry, our team will contact you directly!" }]);
+                    await fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                        body: JSON.stringify(submissionData)
+                    });
+                } catch (submissionError) {
+                    console.error("Failed to submit lead to Web3Forms", submissionError);
+                    setMessages(prev => [...prev, { id: 'error', type: 'bot', content: "I've noted your details, but there was a slight issue sending them to our server. Please feel free to call us directly!" }]);
                 }
+
             } else {
                 setMessages(prev => [...prev, { id: Date.now().toString() + 'bot', type: 'bot', content: botResponse }]);
             }
@@ -145,7 +184,10 @@ const ProjectConcierge: React.FC = () => {
             </div>
 
             {/* Chat Area */}
-            <div className="flex-grow overflow-y-auto p-6 space-y-6 custom-scrollbar bg-gradient-to-b from-primary/30 to-primary/10">
+            <div
+                ref={chatContainerRef}
+                className="flex-grow overflow-y-auto p-6 space-y-6 custom-scrollbar bg-gradient-to-b from-primary/30 to-primary/10"
+            >
                 <AnimatePresence>
                     {messages.map((msg) => (
                         <motion.div
@@ -182,29 +224,38 @@ const ProjectConcierge: React.FC = () => {
                         </div>
                     </motion.div>
                 )}
-                <div ref={messagesEndRef} />
             </div>
 
             {/* Input Area */}
             <div className="p-4 bg-primary/50 border-t border-white/5 backdrop-blur-md">
-                <div className="relative flex items-center gap-2">
-                    <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        onKeyDown={handleKeyPress}
-                        placeholder={step === 3 ? "Describe your requirements..." : "Type your answer..."}
-                        className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-stone-200 placeholder-stone-500 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/50 transition-all"
-                        disabled={isTyping || step > 3}
-                    />
+                {step > 4 ? (
                     <button
-                        onClick={handleSend}
-                        disabled={!inputValue.trim() || isTyping || step > 3}
-                        className="absolute right-2 p-2.5 bg-gold text-primary rounded-full hover:bg-gold-light disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        onClick={resetChat}
+                        className="w-full bg-gold text-primary font-bold rounded-full px-6 py-4 hover:bg-gold-light transition-all flex items-center justify-center gap-2"
                     >
-                        {step > 3 ? <CheckCircle size={20} /> : <Send size={20} />}
+                        <Sparkles size={20} />
+                        Start New Consultation
                     </button>
-                </div>
+                ) : (
+                    <div className="relative flex items-center gap-2">
+                        <input
+                            type="text"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            onKeyDown={handleKeyPress}
+                            placeholder={step === 3 ? "Describe your requirements..." : step === 4 ? "Enter your email or phone..." : "Type your answer..."}
+                            className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-stone-200 placeholder-stone-500 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/50 transition-all"
+                            disabled={isTyping}
+                        />
+                        <button
+                            onClick={handleSend}
+                            disabled={!inputValue.trim() || isTyping}
+                            className="absolute right-2 p-2.5 bg-gold text-primary rounded-full hover:bg-gold-light disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        >
+                            {step > 4 ? <CheckCircle size={20} /> : <Send size={20} />}
+                        </button>
+                    </div>
+                )}
                 <p className="text-center text-[10px] text-stone-600 mt-2">
                     AI-generated insights are preliminary. Consult an expert for final decisions.
                 </p>
